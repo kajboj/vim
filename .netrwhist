@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/kajboj/shutl/argos'
+let g:netrw_dirhist_2='/Users/kajboj/shutl/argos/app/models/argos'
+let g:netrw_dirhist_3='/Users/kajboj/shutl/argos/features/support'
+let g:netrw_dirhist_4='/Users/kajboj/shutl/argos/features'
+let g:netrw_dirhist_5='/Users/kajboj/shutl/argos/db/migrate'
+let g:netrw_dirhist_6='/Users/kajboj/shutl/core_platform'
+let g:netrw_dirhist_7='/Users/kajboj/shutl'
