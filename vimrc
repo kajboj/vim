@@ -1,3 +1,6 @@
+call pathogen#infect()
+call pathogen#runtime_append_all_bundles()
+
 set history=1000
 
 "Git
@@ -133,17 +136,40 @@ vmap _yh :TOhtml<CR>:sav! temp.html<CR>:bd<CR>:!open temp.html<CR><CR>:sleep 1<C
 
 " set virtualedit=block
 
-autocmd filetype * set list
-autocmd filetype * set listchars=eol:$,tab:>-,trail:·,extends:>,precedes:<
-
-au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
-
 " Line numbers
 autocmd filetype * set number
 
 nmap <C-n> :set invnumber<CR>
+nmap _e :e <C-r>%<C-f>dT/a
+
+map ,c<Space> \cc
+let mapleader=","
 
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=#555555 guibg=NONE
 
 
 cd /Users/kajboj/shutl
+
+au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,rabl} set ft=ruby
+au BufNewFile,BufRead *.json                                            set ft=javascript
+au BufNewFile,BufRead *.js                                              set ft=javascript syntax=jquery
+au BufRead,BufNewFile jquery.*.js                                       set ft=javascript syntax=jquery
+au BufNewFile,BufRead {*.hamlbars,*.hbs,*.hamlc}                        set ft=haml
+au BufNewFile,BufRead {*.handlebars}                                    set ft=html
+au BufNewFile,BufRead {*.lhs,*.hs}                                      set ft=haskell syntax=haskell
+au BufNewFile,BufReadPost *.coffee                                      setl shiftwidth=2 expandtab foldmethod=indent nofoldenable
+au BufNewFile,BufRead *.coffee                                          set ft=coffee syntax=coffee
+
+let g:slime_target = "tmux"
+
+autocmd filetype * set listchars=eol:$,tab:>-,trail:·,extends:>,precedes:<
+
+au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,rabl} set list
+au BufNewFile,BufRead *.json                                                 set list
+au BufNewFile,BufRead *.js                                                   set list
+au BufRead,BufNewFile jquery.*.js                                            set list
+au BufNewFile,BufRead {*.hamlbars,*.hbs,*.hamlc}                             set list
+au BufNewFile,BufRead {*.handlebars}                                         set list
+au BufNewFile,BufRead {*.lhs,*.hs}                                           set list
+au BufNewFile,BufReadPost *.coffee                                           set list
+au BufNewFile,BufRead *.coffee                                               set list
