@@ -147,9 +147,6 @@ let mapleader=","
 
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=#555555 guibg=NONE
 
-
-cd /Users/kajboj/shutl
-
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,rabl} set ft=ruby
 au BufNewFile,BufRead *.json                                            set ft=javascript
 au BufNewFile,BufRead *.js                                              set ft=javascript syntax=jquery
@@ -173,3 +170,8 @@ au BufNewFile,BufRead {*.handlebars}                                         set
 au BufNewFile,BufRead {*.lhs,*.hs}                                           set list
 au BufNewFile,BufReadPost *.coffee                                           set list
 au BufNewFile,BufRead *.coffee                                               set list
+
+set backupdir=/tmp
+set directory=/tmp
+
+cd ~/code
