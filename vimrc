@@ -13,6 +13,7 @@ set foldmethod=indent   "fold based on indent
 set foldnestmax=100
 set nofoldenable        "dont fold by default
 
+
 if has("gui_running")
   "tell the term has 256 colors
   set t_Co=256
@@ -51,25 +52,47 @@ else
   "dont load csapprox if there is no gui support - silences an annoying warning
   let g:CSApprox_loaded = 1
 
+  set t_Co=256
+  set t_AB=[48;5;%dm
+  set t_AF=[38;5;%dm
+
+
   "set railscasts colorscheme when running vim in gnome terminal
   if $COLORTERM == 'gnome-terminal'
     set term=gnome-256color
     colorscheme railscasts2
   else
-    colorscheme default
+    "colorscheme default
+    colorscheme kai
   endif
 
 endif
 
+" Strip trailing whitespace
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
 
+nmap _s :call <SID>StripTrailingWhitespaces()<CR>
 
-
-
+set list listchars=trail:.,extends:>
+" Display extra whitespace
+set list listchars=tab:»·,trail:·
 
 
 set expandtab
 set ts=2
 set shiftwidth=2
+set softtabstop=2
+set autoindent
 
 set nocompatible          " We're running Vim, not Vi!
 syntax on                 " Enable syntax highlighting
@@ -80,7 +103,7 @@ set nowrap
 set laststatus=2
 set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 
-colorscheme kai
+"colorscheme kai
 
 "set foldmethod=syntax
 
