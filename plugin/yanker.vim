@@ -1,10 +1,7 @@
 let s:reg = '*'
 
 let s:prefixes = {
-      \"fast_specs.*_spec.rb" : "rspec -Ifast_specs",
-      \"fast_specs.*feature"  : "rspec -Ifast_specs",
       \"spec.*_spec.rb"       : "be rspec",
-      \"spec.*feature"        : "be rspec",
       \"features.*feature"    : "be cucumber"}
 
 function! s:Prefix()

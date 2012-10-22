@@ -9,12 +9,11 @@ set statusline+=[%{GitBranch()}]
 "turn off needless toolbar on gvim/mvim
 set guioptions-=T
 
-set foldmethod=indent   "fold based on indent
+set foldmethod=syntax
 set foldnestmax=100
 set nofoldenable        "dont fold by default
 
-
-if has("gui_running")
+function! s:guiSetup()
   "tell the term has 256 colors
   set t_Co=256
 
@@ -48,24 +47,23 @@ if has("gui_running")
 
   " console dialogs instead of popups
   set guioptions+=c
-else
+endfunction
+
+function! s:nonGuiSetup()
   "dont load csapprox if there is no gui support - silences an annoying warning
-  let g:CSApprox_loaded = 1
+  "let g:CSApprox_loaded = 1
 
   set t_Co=256
-  set t_AB=[48;5;%dm
-  set t_AF=[38;5;%dm
+  "set t_AB=[48;5;%dm
+  "set t_AF=[38;5;%dm
 
+  colorscheme Tomorrow-Night
+endfunction
 
-  "set railscasts colorscheme when running vim in gnome terminal
-  if $COLORTERM == 'gnome-terminal'
-    set term=gnome-256color
-    colorscheme railscasts2
-  else
-    "colorscheme default
-    colorscheme kai
-  endif
-
+if has("gui_running")
+  call s:guiSetup()
+else
+  call s:nonGuiSetup()
 endif
 
 " Strip trailing whitespace
@@ -83,11 +81,6 @@ endfunction
 
 nmap _s :call <SID>StripTrailingWhitespaces()<CR>
 
-set list listchars=trail:.,extends:>
-" Display extra whitespace
-set list listchars=tab:»·,trail:·
-
-
 set expandtab
 set ts=2
 set shiftwidth=2
@@ -102,10 +95,6 @@ set nowrap
 
 set laststatus=2
 set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-
-"colorscheme kai
-
-"set foldmethod=syntax
 
 set timeoutlen=500
 set ignorecase
@@ -168,7 +157,7 @@ nmap _e :e <C-r>%<C-f>dT/a
 map ,c<Space> \cc
 let mapleader=","
 
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=#555555 guibg=NONE
+highlight LineNr term=bold cterm=NONE ctermfg=236 ctermbg=NONE gui=NONE guifg=#555555 guibg=NONE
 
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,rabl} set ft=ruby
 au BufNewFile,BufRead *.json                                            set ft=javascript
@@ -182,7 +171,7 @@ au BufNewFile,BufRead *.coffee                                          set ft=c
 
 let g:slime_target = "tmux"
 
-autocmd filetype * set listchars=eol:$,tab:>-,trail:·,extends:>,precedes:<
+set list listchars=tab:>-,trail:·,extends:>,precedes:<
 
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,rabl} set list
 au BufNewFile,BufRead *.json                                                 set list
@@ -197,4 +186,8 @@ au BufNewFile,BufRead *.coffee                                               set
 set backupdir=/tmp
 set directory=/tmp
 
-cd ~/code
+cd ~/shutl
+
+nmap _t} /dodwi{ $ciw}0
+
+set clipboard=unnamed

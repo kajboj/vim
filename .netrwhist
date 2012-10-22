@@ -1,2 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =0
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/kajboj/shutl/quote_service'
+let g:netrw_dirhist_2='/Users/kajboj/code/dotfiles'
+let g:netrw_dirhist_3='/Users/kajboj/shutl/quote_service'
+let g:netrw_dirhist_4='/Users/kajboj/shutl/quote_service/spec/integration'
+let g:netrw_dirhist_5='/Users/kajboj/code/vim'
+let g:netrw_dirhist_6='/Users/kajboj/code/vim/plugin'
+let g:netrw_dirhist_7='/Users/kajboj/code/dotfiles'
+let g:netrw_dirhist_8='/Users/kajboj/code/dotfiles/zsh'
+let g:netrw_dirhist_9='/Users/kajboj/code/dotfiles'
